@@ -1,5 +1,5 @@
 /*!
- * ui-grid - v3.0.7 - 2015-10-06
+ * ui-grid - v3.0.7 - 2015-11-24
  * Copyright (c) 2015 ; License: MIT 
  */
 
@@ -3383,13 +3383,13 @@ function uiGridDirective($compile, $templateCache, $timeout, $window, gridUtil, 
               }
             });
 
-            if (grid.options.enableFiltering) {
-              var allColumnsHaveFilteringTurnedOff = grid.options.columnDefs.every(function(col) {
+            if (grid.options.enableFiltering  && !maxNumberOfFilters) {
+              var allColumnsHaveFilteringTurnedOff = grid.options.columnDefs.length && grid.options.columnDefs.every(function(col) {
                 return col.enableFiltering === false;
               });
 
               if (!allColumnsHaveFilteringTurnedOff) {
-                maxNumberOfFilters++;
+                maxNumberOfFilters = 1;
               }
             }
 
